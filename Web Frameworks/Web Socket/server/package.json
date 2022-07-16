@@ -1,0 +1,14 @@
+{
+  "name": "weserver",
+  "version": "1.0.0",
+  "description": "no desc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tong",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^5.0.0"
+  }
+}

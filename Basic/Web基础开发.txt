@@ -1,0 +1,118 @@
+https://developer.mozilla.org/zh-CN/docs/Web
+15款好用超赞的chrome插件 https://www.cnblogs.com/werewolfBoy/p/11263419.html
+2020年10大UI设计(前端)   http://www.woshipm.com/pd/2646580.html
+60个开发者免费资源库     http://www.myexception.cn/other/1391134.html
+HMTL 标签定义全集        https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+Fonts UI样式             https://fonts.google.com/  
+    选择样式<link>或@import >> https://transfonter.org/ 转换style样式 >> 可以下载，自定义部署，避免第三方的使用
+
+2020 年页面样式新趋势  https://www.youtube.com/watch?v=-oyeaIirVC0
+	
+Amazing Loading Animation  https://www.youtube.com/watch?v=QLiZ5VrhA98&t=88s
+Top 10 Stunning CSS 3 Effects For Navigation Bar https://www.youtube.com/watch?v=kAGkAJDLYGY 
+CSS3 https://segmentfault.com/a/1190000019279874
+css如何实现n宫格布局 https://segmentfault.com/a/1190000020216215
+
+CSS创意与视觉表现   https://www.zhangxinxu.com/wordpress/2019/06/cssconf-css-idea/ 
+CSS 滚动进度条效果  https://www.cnblogs.com/coco1s/p/10244168.html
+CSS custom radio switch ：radio切换效果，左右可选项 https://codyhouse.co/blog/post/how-to-accessible-radio-switch-in-css
+
+CSS 阴影技巧与细节 https://www.cnblogs.com/coco1s/p/9913885.html
+CSS Flexbox 可视化手册 https://segmentfault.com/a/1190000018056228
+使用CSS制作火焰效果 https://www.cnblogs.com/coco1s/p/10605971.html
+SS实现两个球相交的粘粘效果 https://segmentfault.com/a/1190000019171125
+
+CSS盒模型  https://segmentfault.com/a/1190000019810681
+将CSS样式写在JS代码中：Styletron  https://baseweb.design/blog/getting-started-with-styletron/
+使用box shadows+clip-path定义标签：https://css-tricks.com/using-box-shadows-and-clip-path-together/
+CSS flex布局最后一行列表左对齐的N种方法 https://www.zhangxinxu.com/wordpress/2019/08/css-flex-last-align/
+
+零JS代码情况下实现一个实时聊天功能 https://segmentfault.com/a/1190000019242663  
+UI时钟和动图特效   https://www.cnblogs.com/juzii/p/5973516.html
+
+-----------------------------------------------------------------------------------------
+课程：https://www.youtube.com/watch?v=7Ht_RW5PzQQ&list=PLrW43fNmjaQVDrpgRUPpKGw6dit0kpE3J
+
+1. Web Development: Learn HTML Basics Beginners Tutorial
+   安装HTMLHint 用于分析HTML Code
+   安装Auto Close Tag 自动补全页面的标签
+   安装Live Server 自动的生成渲染的页面结果 
+       >> 重启VS code之后 点击下方icon使用
+	   >> Right click, Open with live server 
+	   >> 可以自定义用户的浏览器显示 Custom borwser
+   配置Settings.json  
+       >> Live Server › Settings: Advance Custom Browser Cmd Line
+       "editor.formatOnSave": true 配置的时候自动格式化
+    
+2. Web Development: Learn CSS Basics Beginners Tutorial
+   安装 HTML Snippets：Full HTML tags including HTML5 Snippets 直接写tag标签的名称，自动补充完整，几乎包含所有的页面标签
+   
+3. Web Development: Learn Sass Basics Beginners Tutorial Scss
+   Sass 能够提供CSS不具备的强大的功能，并且能够动态的编译成CSS文件
+   下载并安装Sass  https://sass-lang.com/install
+   安装Node.js通过Npm来安装Sass
+   > npm install -g sass
+   > sass --version
+   > sass --watch source/stylesheets/index.scss build/stylesheets/index.css 
+   实时的监测文件的变化，生成CSS文件
+   
+4. Web Development: DnaWeb Basics Beginners Tutorial AngelSix
+
+5. Web Development: Web Development Environment Setup with DnaWeb Live Server
+   (安装第三方的类库 DnaWeb Engine能够快速的构建基本项目的模板)
+
+6. Web Development: Responsive Web Design In 1 Line of Code Tutorial
+	 构建响应的页面的基本逻辑
+     // 当页面的宽度<=900px的时候，刷新设置页面的 Response styles 
+        @media only screen and (max-width: 900px) {
+            &.content-a, &.content-b, &.content-c {
+                width: 50%;
+            }
+            .button {
+                display: block;
+                text-align: center;
+            }
+        }
+        @media only screen and (max-width: 600px) {
+            &.content-a, &.content-b, &.content-c {
+                width: 100%;
+            }
+            .half {
+              width: 100%;
+            }
+        }
+   
+08 Web Development: Responsive Top Menu Navigation HTML/CSS  
+   构建响应式的顶部标签
+   
+09 Web Development: JavaScript Basics Responsive Top Menu 
+   使用JS完成页面的基本响应效果
+
+10 Web Development: Animation Particle Engine JS CSS DnaWeb
+   JS和CSS的动画实战：如何让页面动态化
+    
+--------------------------------------------------------
+
+1. 实现从页面下载文件的功能
+
+2. 公司官方网站设计和开发 
+   https://www.youtube.com/watch?v=CrSC1ZA9j0M&t=705s
+   https://www.youtube.com/watch?v=zhllkjYYUVE
+   https://www.youtube.com/watch?v=dgKSqz3it50&t=1144s
+   
+3. 前端CV展示界面 
+   https://www.youtube.com/watch?v=pNcAuqInG6s&t=332s
+   https://www.youtube.com/watch?v=L9W33EuGjoY
+
+4. Googlge clone Search Web Project
+   https://www.youtube.com/watch?v=NDbruK1fzG8
+   
+5. Js Chrome Extensions 
+   https://www.youtube.com/watch?v=iARTHMmmqQA&t=307s
+   
+   
+   
+   
+   
+   
+   

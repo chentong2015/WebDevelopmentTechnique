@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ * nodejs笔记2 --关于nodejs最新启动方式
+  1，运行应用以前是node app.js或者 supervisor app.js
+  2, 现在的应用方式是npm start或者supervisor bin/www
+ */
+
+// 引入访问文件 通过require
+var app = require('../app');
+
+var debug = require('debug')('05-express-first-app:server');
+var http = require('http');
+
+// set the port of starting
+var port = normalizePort(process.env.PORT || '8000');
+app.set('port', port);
+
+// Create HTTP server and listen to the port
+var server = http.createServer(app);
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+console.log("Page web : http://localhost:8000/");
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+  if (isNaN(port)) { return val; } // named pipe
+  if (port >= 0) { return port; } // port number
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+  var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}

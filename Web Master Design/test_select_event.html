@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+
+<form>
+    <select name="selectInput" class="form-control form-control-sm"
+            onfocus="SetOldValue(this)"
+            id="select_cpu_4"
+            onchange="Change(this)" style="width: 100px;">
+        <option>1</option>
+        <option>2</option>
+    </select>
+</form>
+
+<script>
+    var oldValue;
+
+    function SetOldValue(select) {
+        console.log(select.value)
+        oldValue = select.value;
+    }
+
+    function Change(select) {
+        console.log(oldValue);
+        console.log(select.value)
+        oldValue = select.value
+
+        console.log(select.id)
+
+        var id = select.id;
+        const myArray = id.split("_");
+        let idValue = myArray[1] + "_" + myArray[2];
+        console.log(idValue)
+    }
+</script>
+
+</body>
+</html>

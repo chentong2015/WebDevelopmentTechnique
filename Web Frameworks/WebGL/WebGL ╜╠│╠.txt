@@ -1,0 +1,6 @@
+
+WebGL 教程: https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API/Tutorial
+
+WebGL 实时3D渲染: https://www.ituring.com.cn/book/tupubarticle/9847
+
+WebGL 从渲染到纹理: https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-render-to-texture.html

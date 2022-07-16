@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Snake Game</title> 
+     <script type="text/javascript">
+	   var snake = window.snake || {};   
+	   // 全屏显示函数 使用canvas下的定义函数 requestFullscreen mozRequestFullScreen webkitRequestFullscreen msRequestFullscreen 满足各种情况下的全屏显示效果
+	   function launchFullscreen(element){
+		   if(element.requestFullscreen){
+			   element.requestFullscreen();
+		   }else if(element.mozRequestFullScreen){
+			   element.mozRequestFullScreen();
+		   }else if(element.webkitRequestFullscreen){
+			   element.webkitRequestFullscreen();
+		   }else if(element.msRequestFullscreen){
+			   element.msRequestFullscreen();
+		   }
+	   }  
+	   // 在窗口加载时候 直接运行的函数
+	   window.onload = function(){
+		   document.addEventListener("fullscreenchange", function(){snake.game.adjust();});
+		   document.addEventListener("webkitfullscreenchange", function(){snake.game.adjust();});
+		   document.addEventListener("mozfullscreenchange", function(){snake.game.adjust();});
+		   document.addEventListener("MSFullscreenchange", function(){snake.game.adjust();});
+		   snake.game = ( function() {
+			   var canvas = document.getElementById('canvas');
+			   var ctx = canvas.getContext('2d'); //获取2d的文档区的空间
+			   var status = false;
+			   var score = 0;
+			   var old_direction = 'right';
+			   var dircetion = 'right';
+			   var block = 10;
+			   var refresh_rate = 250;
+			   var pos = [[5,1],[4,1],[3,1],[2,1],[1,1]];  // 初始时的位置 像素链的长度和定义的起始位置 !!!!!!!!!!!!!!!!!!!!!!!!
+			   var keys = { 37 : 'left', 38 : 'up',  39 : 'right',  40 : 'down'  }; 
+			   var food = [ Math.round(Math.random(4)*(canvas.width-10)), Math.round(Math.random(4)*(canvas.height-10)) ];
+			   function createfood(){		       
+				   food = [Math.round(Math.random(4)*850), Math.round(Math.random(4)*600)]; //随机自动生成食物的节点 food
+			   }
+			   function adjust(){
+				   if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullscreenElement || document.MSFullscreenElement) {
+					   canvas.width = window.innerWidth;
+					   canvas.height = window.innerHeight;
+					   document.getElementById('controls').style.display = 'none';
+				   }else {
+					   canvas.width = 850;
+					   canvas.height = 600;
+					   document.getElementById('controls').style.display = 'inline';
+				   }
+			   }	
+			   function todraw(){
+				   for(var i=0; i< pos.length; i++){
+					   draw(pos[i]);
+				   }
+			   }	   
+			   function draw(pos){
+				   var x = pos[0] * block;
+				   var y = pos[1] * block;
+				   //游戏结果状况判断 !!!!!!!!!!!!!!!!!!!!!!!!!!!
+				   if( x>=canvas.width || x<=0 || y>=canvas.height || y<=0 ){
+					   document.getElementById('pause').disabled='true'; //暂停掉游戏
+					   snake.game.status=false; //结束游戏的状态
+					   ctx.clearRect(0,0,canvas.width,canvas.height); //清除掉文本的信息内容
+					   ctx.font='40px san-serif';
+					   ctx.fillText('Game Over',300,250); 
+					   ctx.font='20px san-serif';
+					   ctx.fillstyle='#ffaa80';
+					   ctx.fillText('Refresh the page or click the restart button to play again',200,300);
+					   throw('Game Over');
+				   }else if( score > 5000) {
+				       document.getElementById('pause').disabled='true'; //暂停掉游戏
+					   snake.game.status=false; //结束游戏的状态
+					   ctx.clearRect(0,0,canvas.width,canvas.height); //清除掉文本的信息内容
+					   ctx.font='30px san-serif';
+					   ctx.fillText('Congratuations, You win this game !!!',250,250); 
+					   throw('Congratuations');
+					}else{
+					   ctx.beginPath();
+					   ctx.fillStyle ='#ffaa80';
+					   ctx.fillRect(x,y,block,block);
+					   ctx.closePath();
+				   }
+			   }
+			   //游戏的主要循环函数
+			   function loop(){
+				   ctx.clearRect(0,0,canvas.width,canvas.height);
+				   todraw(); //该函数用于判断游戏的结果状况
+				   giveLife();
+				   feed();
+				   //游戏获取到食物判断 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				   if(is_catched(pos[0][0]*block,pos[0][1]*block,block,block,food[0],food[1],10,10)){
+					   score += 10;
+					   createfood();
+					   document.getElementById('scroeboard').innerHTML = score;
+					   grow(); //吃到食物后变长
+					   if(refresh_rate > 100){
+						   refresh_rate -= 5;
+					   }
+				   }
+				   snake.game.status = setTimeout(function(){loop();},refresh_rate);
+			   }
+			   function feed(){
+				   ctx.beginPath();
+				   ctx.fillStyle = "#ff0000";
+				   ctx.fillRect(food[0],food[1],10,10); //填充10*10大小的像素点 作为食物
+				   ctx.fill();
+				   ctx.closePath();
+			   }		  
+			   function is_catched(ax, ay, awidth, aheight, bx, by, bwidth, bheight){
+				   return !( ((ay+aheight)<(by)) || (ay>(by+bheight)) || ((ax+awidth)<bx) || (ax>(bx+bwidth)) );
+			   }
+			   function giveLife(){
+				   var nextPosition = pos[0].slice();
+				   switch(old_direction){
+					   case 'right':
+					      nextPosition[0] += 1;
+						  break;
+					   case 'left' :
+					      nextPosition[0] -= 1;
+						  break;
+					   case 'up' : 
+					      nextPosition[1] -= 1;
+						  break;
+					   case 'down' :
+					      nextPosition[1] += 1;
+						  break;
+				   }
+				   pos.unshift(nextPosition); //刷新位置坐标
+				   pos.pop();
+			   }		   	   
+			   function grow(){
+			       // 获取食物像素点后的变长 
+				   var nextposition = pos[0].slice();
+				   switch(old_direction){
+					   case 'right':
+					      nextposition[0] += 1;
+						  break;
+					   case 'left' :
+					      nextposition[0] -= 1;
+						  break;
+					   case 'up' :
+					      nextposition[1] += 1;
+						  break;
+					   case 'down':
+					      nextposition[1] -= 1;
+						  break;
+				   }
+				   pos.unshift(nextposition);
+			   }  
+			   // 根据按键的输入 控制页面的事件event  设置snake前进的方向setway
+			   window.onkeydown = function(event){
+				   direction = keys[event.keyCode];
+				   if(direction){
+					   setway(direction);
+					   event.preventDefault();
+				   }
+			   };
+			   function setway(direction){
+				   switch(direction){
+					   case 'left' :
+					      if(old_direction != 'right'){
+							  old_direction = direction;
+						  }
+						  break;
+					   case 'right' : 
+					      if(old_direction != 'left'){
+							  old_direction = direction;
+						  }
+						  break;
+					   case 'up' :
+					      if(old_direction != 'down'){
+							  old_direction = direction;
+						  }
+					  break;
+					   case 'down' :
+					      if(old_direction != 'up'){
+							  old_direction = direction;
+						  }
+						  break;
+				   }
+			   }	  
+			   function begin(){
+				   loop(); //开启游戏的主要循环
+			   }
+			   function start(){
+				   ctx.fillStyle='#ffaa80';
+				   ctx.fillRect(0,0,canvas.width,canvas.height);
+				   ctx.fillStyle='#ADFF2F';
+				   ctx.font='italic 60px san-serif';
+				   ctx.fillText('Feed The Snake', 240, 180);
+				   var img = new Image();
+				   img.onload = function(){
+					   ctx.drawImage(img,260,240,320,320);
+					   ctx.fillRect(410,330,10,10);
+				   }
+				   img.src = 'snake.png';
+			   }
+			   function pause(elem){
+				   if(snake.game.status){
+					   clearTimeout(snake.game.status); //在游戏状态为真的情况下暂停游戏 否则继续循环 
+					   snake.game.status = false;
+					   elem.value = 'Play';
+				   }else{
+					   loop();
+					   elem.value = 'Pause';
+				   }
+			   }  
+			   function restart(){
+				   location.reload(); //控制页面的重新加载函数 !!!!!!!!!!!!!!!!!!
+			   }
+			   function fullscreen(){
+				   launchFullscreen(canvas); //控制页面的全屏显示函数 !!!!!!!!!!!!!!
+			   }
+			   return {
+				   pause : pause, restart : restart,start : start, begin : begin, fullscreen : fullscreen, adjust : adjust,
+			   };
+		   })();
+		   snake.game.start(); //游戏开始时候的初始化 初始的显示界面 !!!!!!!!!!!!!!!!
+     }
+    </script>		    	   
+  </head>
+  <body background="background.jpg">
+    <canvas width="850" height="600" id="canvas" style="background:#ffffb3; margin-top:50px; margin-left:100px; border:2px solid #9999ff;" onclick="snake.game.begin();"></canvas>   
+    <div id="controls" style="float:right; text-align:center; margin-right: 420px; margin-top: 100px;">
+	   <div style="font-size:30px; color: red;">  score : <span id="scroeboard"> </span> </div> <br />
+       <input type="button" id="pause" value="Play" onclick="snake.game.pause(this);" accesskey="p" /> <br /> <br />
+       <input type="button" id="restart" value="Reatart" onclick="snake.game.restart();" /> <br /> <br />
+       <!--  <input type="button" id="fullscreen" value="Play Fullscreen" onclick="snake.game.fullscreen();"/>  -->
+    </div>   
+	<audio controls style="margin-left: 100px; margin-top: 20px">
+	   <source src="bgm.mp3" type="audio/mpeg">
+	</audio> 
+  </body> 
+</html>

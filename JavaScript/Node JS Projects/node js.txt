@@ -1,0 +1,46 @@
+﻿
+> npm install basic-auth --save 
+## add module in the package.json :: "dependencies" 
+> npm install express --save
+## use node.js to send a mail. ===> unlock the gmail : "https://accounts.google.com/b/0/DisplayUnlockCaptcha?lp=1&hl=zh-CN"
+> npm install nodemailer
+
+>> Node.js Tutorial for Beginners: Learn Node in 1 Hour
+	https://www.youtube.com/watch?v=TlB_eWDSMt4
+
+>> Node.js Basic Auth 
+	https://github.com/jshttp/basic-auth
+	https://blog.csdn.net/sodino/article/details/51649248
+	https://github.com/sodino/basicAuth
+
+>> Node.js + Express - Tutorial - GET and POST Requests  <---------- nodejs-basics-tutorial
+	https://www.youtube.com/watch?v=Sb8xyCa2p7A
+
+	https://www.youtube.com/watch?v=hE5zeEiVqpw    =====> TO DO
+	https://github.com/mschwarzmueller/nodejs-basics-tutorial
+
+>> Node JS Tutorial for Beginners #30 - Handling POST Requests  <---------- node.js playlist
+	https://www.youtube.com/watch?v=rin7gb9kdpk
+	https://www.npmjs.com/package/body-parser   ==> parsing json data form the request
+	
+>> Back-end web : node.js + MongoDB 
+	https://www.w3schools.com/nodejs/nodejs_mongodb.asp
+	http://mongodb.github.io/node-mongodb-native/2.0/tutorials/connecting/
+
+Express.Js 简洁而灵活的Node.js Web应用框架，构建Web APP和HTTP工具
+	Node.js + MongoDB + Express.Js 构建Geolocation App 地图定位APP    https://www.freecodecamp.org/news/a-complete-mongodb-tutorial/
+	使用Node.js构建RESTful API + JWT  https://github.com/flowforfrank/express-api
+	Node.js中使用TypeScript  https://blog.bitsrc.io/best-practices-for-using-typescript-with-node-js-50907f8cc803 
+
+
+
+
+
+
+
+
+
+
+
+
+

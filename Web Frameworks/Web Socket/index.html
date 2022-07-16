@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+   		<meta charset="UTF-8">
+   		<title> WebSockets </title>
+  </head>
+  <body>
+
+  		<div id="log"></div>
+  		<div id="sendDiv">
+	 	<input type="text" placeholder="input your message here" id="text">
+	  		<button>Send</button>
+	  	</div>
+  
+  	 <script type='text/javascript'>
+
+		// Site test websocket in real time : https://www.websocket.org/echo.html
+		// create our own serveur socket : Node.js
+		// Create by npm
+
+		var sock = new WebSocket("ws://localhost:5001");
+		var log = document.getElementById('log');
+		// Get the name of the person  
+		var name = prompt('what is your name fella');
+		sock.onopen = function() {
+			sock.send(JSON.stringify({
+				type: "name",
+				data: name
+			}));
+		}
+
+		// Connect the web socket : open
+		/*
+		sock.onopen = function(event) {
+			// Alert in the page web
+			//alert('socket connected successfully');
+			// Send a message in 1 seconde to the websocket
+			setTimeout(function(){ sock.send("Start the conversation"); }, 1000);
+		};
+		*/
+
+        // Add an action to the Send Button
+        document.querySelector('button').onclick = function() {
+          	var textInput = document.getElementById('text').value;
+        	// Send message to the server websocket       	
+        	sock.send(JSON.stringify({
+        		type: "message",
+        		data: textInput
+        	}));
+
+        	log.innerHTML  += "You :" + textInput + "<br>";
+        	//document.getElementById("log").innerHTML += textInput + "<br>";
+        	//document.getElementById('text').value = "";
+        }
+
+		// Receive these message form others
+		sock.onmessgae = function(event) {
+			console.log(event);
+			var json = JSON.parse(event.data);
+			log.innerHTML += json.name + " : " + json.data + "<br>";
+			//document.write("Hello World!");
+			//document.getElementById("log").innerHTML += event + "<br>";
+		}
+
+	</script>
+
+  </body>
+  
+</html>

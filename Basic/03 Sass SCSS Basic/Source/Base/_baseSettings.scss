@@ -1,0 +1,38 @@
+// Partial class
+// 这个是通用的SCSS的样式文件
+// 不会动态的生成指定的CSS文件
+
+// High level settings for the entire site
+// To create relational sizing design
+// 这里也可以使用一个变量的全局的更改
+
+$base-spacing-unit: 25px;
+$base-font-size: 16px;
+$base-line-height: 10px;
+
+$spacing-smaller: 5px;
+$spacing-small: 10px;
+$spacing-normal: 15px;
+$spacing-large: 20px;
+$spacing-larger: 30px;
+
+$font-smaller: 5px;
+$font-small: 10px;
+$font-normal: 15px;
+$font-large: 20px;
+$font-larger: 30px;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 500;
+$font-weight-larger: 700;
+$font-weight-heading: 700;
+
+$header-size-1: 40px;
+$header-size-2: 30px;
+$header-size-3: 20px;
+
+$space-padding-smaller: 2px;
+$space-padding-small: 5px;
+$space-padding-normal: 10px;
+$space-padding-large: 15px;
