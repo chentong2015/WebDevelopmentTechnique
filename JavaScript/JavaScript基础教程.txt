@@ -1,0 +1,63 @@
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide
+
+Youtube Javascript Mastery
+https://www.youtube.com/watch?v=ZwFA3YMfkoc
+Build and Deploy a Realtime Chat Application - Socket.io, Node.js, and React.js 
+
+Node.js / Express Course - Build 4 Projects
+https://www.youtube.com/watch?v=qwfE7fSVaZM
+
+ECommerce Web Shop
+https://www.youtube.com/watch?v=377AQ0y6LPA
+
+JavaScript实现文件拖拽上传
+https://webdevtrick.com/jquery-drag-and-drop-file-upload/
+
+
+JavaScript : 弱类型的编程语言
+  JavaScript 箭头函数究竟是什么？ https://www.css88.com/archives/10033
+  JavaScript function(函数) – JavaScript 完全手册 ： https://www.css88.com/archives/10152		
+  在使用新的JavaScript库时需要考虑的12件事  https://segmentfault.com/a/1190000018006262  
+  
+  通过javascript在网页端生成zip压缩包并下载  https://www.cnblogs.com/diligenceday/p/5008777.html  ******
+  Egg支持JS编程中的智能提示  https://cnodejs.org/topic/5c6657630752e020af943d12
+  JavaScript面试的完美指南(开发者视角)  
+      https://cnodejs.org/topic/5c6e1d28e1a81129a7ad91a6   
+      https://www.youtube.com/watch?v=P8ltWIqDPzo&feature=youtu.be
+  Const vs Object.freeze() 在jS中的区别，如何定义一个常量的对象  https://alligator.io/js/const-vs-obj-freeze/
+  JavaScript 为什么要有 Symbol 类型？https://cnodejs.org/topic/5c905b6596558e26e1b66bdc
+  
+  Top 10 JavaScript Frameworks 前10的JS框架：https://www.c-sharpcorner.com/article/top-10-javascript-frameworks-in-the-world/
+  Top 9 JavaScript frameworks front-end    https://opensource.com/article/20/5/open-source-javascript-frameworks
+  
+  JavaScript 时间轴的动画库  Scene.js ：https://www.infoq.cn/article/Qg*WKltTiJZSfIFmeHv3
+  Zdog是一个用于<canvas>和SVG的3D JavaScript引擎 https://www.infoq.cn/article/KhawqZbGLiC9_USttc0m
+  
+  JS构建Web Chart: https://www.freecodecamp.org/news/diverging-bar-chart-javascript/
+  JS生成PDF类库: https://dev.to/handdot/generate-a-pdf-in-js-summary-and-comparison-of-libraries-3k0p
+  
+  WebGL JS 2D的框架
+  Javascript 3D library：JS的3D库
+  		thress.js   https://threejs.org/
+                                  https://www.youtube.com/watch?v=Q7AOvWpIVHU
+  			    https://www.freecodecamp.org/news/three-js-tutorial/
+  			    https://hackernoon.com/introduction-to-3d-javascript-library-threejs-basics-aec33yfb
+  		babylonjs   https://www.babylonjs.com/  Web 3D 引擎
+  		cesiumjs    https://cesiumjs.org/       Web 3D Mapping and Virtual Globe Platform 
+  3 JavaScript Frameworks (Angular与React的JS框架) https://www.technotification.com/2019/05/new-javascript-frameworks-2019.html
+	
+JS 开发框架
+  Node.js和Vue.js写了个博客园的移动端Web App: https://www.cnblogs.com/xuhuale/p/10924576.html 
+  
+  Vue+Element实现网页版个人简历系统  https://www.cnblogs.com/HouJiao/p/12111366.html
+	
+  Vue.js 一个漂亮的动漫站源码 网站地址：https://ebb.io  源码下载：https://github.com/ebb-io/ebbx      
+  Vue.js 注意事项与技巧 https://segmentfault.com/a/1190000018718923
+  vue.js 组件间通信六种方式（完整版） https://segmentfault.com/a/1190000019208626
+  Vue.js 面试题及答案 https://segmentfault.com/a/1190000020097187
+	Vue.js 3：面向未来的编程  https://www.infoq.cn/article/3Bmj5eAmaWfbkpagUu5l
+  Vue MVVM 双向绑定全量版整理  https://www.infoq.cn/article/sGeiocEofyryEbrkYH30
+ 
+  Vue2.x基础免费视频教程  https://www.bilibili.com/video/av48858873
+
+
