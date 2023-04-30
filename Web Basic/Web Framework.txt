@@ -1,0 +1,13 @@
+SPA: single page application
+1. 使H5应用和原生应用一样流畅，没有界面的跳转，交互在同一个界面
+2. 不进行页面的整体刷新，只是刷新局部的内容
+3. 直接在前端切换内容，而不通过后端路由url/#/user
+
+WebGL: 3D渲染
+https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API/Tutorial
+渲染到纹理: https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-render-to-texture.html
+
+Webpack: 模块打包器
+https://webpack.js.org/concepts/ 
+Webpack is a static module bundler for modern JavaScript applications. 
+When webpack processes your application, it internally builds a dependency graph which maps every module your project needs and generates one or more bundles

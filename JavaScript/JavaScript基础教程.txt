@@ -61,3 +61,14 @@ JS 开发框架
   Vue2.x基础免费视频教程  https://www.bilibili.com/video/av48858873
 
 
+JS PDF生成框架
+  https://www.jianshu.com/p/4941c7966cc3
+  https://github.com/MrRio/jsPDF
+  https://rawgit.com/MrRio/jsPDF/master/docs/jsPDF.html
+  https://github.com/linwalker/render-html-to-pdf
+
+
+JS Popper Tooltip 
+  http://animejs.com/documentation/#JSarray
+
+
