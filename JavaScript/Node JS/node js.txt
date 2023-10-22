@@ -1,4 +1,6 @@
 ﻿
+Node.js是一个运行时环境，可以在浏览器之外的地方运行js代码
+
 > npm install basic-auth --save 
 ## add module in the package.json :: "dependencies" 
 > npm install express --save

@@ -1,5 +1,10 @@
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide
 
+Javascript Http Request:
+https://reqbin.com/code/javascript/wzp2hxwh/javascript-post-request-example
+https://www.freecodecamp.org/news/javascript-post-request-how-to-send-an-http-post-request-in-js/
+
+
 Youtube Javascript Mastery
 https://www.youtube.com/watch?v=ZwFA3YMfkoc
 Build and Deploy a Realtime Chat Application - Socket.io, Node.js, and React.js 

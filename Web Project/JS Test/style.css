@@ -1,0 +1,12 @@
+input {
+    text-align: right;
+}
+
+button {
+    margin: 20px;
+    display: block;
+}
+
+.output {
+    margin-top: 10px;
+}
