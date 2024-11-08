@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<button class="custom-refresher" onclick="refreshDivContent()">Refresh Div</button>
+<div id="results-to-refresh">
+    <p> Khatrimaza is a public torrent website.
+        Hollywood movies and South
+        movies but also series from various digital.</p>
+</div>
+
+<script type="text/javascript">
+    // $(document).ready(function () {
+    //     // jQuery的class类选择器
+    //     $(document).on('click', '.custom-refresher', function () {
+    //
+    //     });
+    // });
+
+    // 设置定时的事件，来运行自动实现的功能
+    // 只改变页面的部分内容 ===> 整体的页面不动，只是动态的刷新和添加
+    // $(document).ready(function () {
+    //     $(`.custom-refresher`).click(function () {
+    //         $.ajax({
+    //             url: 'http://localhost:8080/status/test',
+    //             type: "GET",
+    //             success: function (response) {
+    //                 //  jQuery的id标签选择器
+    //                 console.log(`success ajax`)
+    //                 console.log(response)
+    //
+    //                 // $('#results-to-refresh').html(response);
+    //             },
+    //
+    //             error: function (error) {
+    //                 console.log(`error ${error}`)
+    //             }
+    //         })
+    //     })
+    // });
+
+    function refreshDivContent() {
+        console.log("test --- ");
+        // $.ajax({
+        //     url: 'http://localhost:8080/status/test',
+        //     // headers: {'Access-Control-Allow-Origin': '*'},
+        //     type: "GET",
+        //     dataType: 'jsonp',
+        //     crossDomain: true,
+        //     contentType: "application/json; charset=utf-8",
+        //     success: function (response) {
+        //         //  jQuery的id标签选择器
+        //         console.log(`success ajax`)
+        //         console.log(response)
+        //         // $('#results-to-refresh').html(response);
+        //     },
+        //     error: function (error) {
+        //         console.log(`error ${error}`)
+        //     }
+        // });
+
+
+        // $.ajax({
+        //     url: "http://localhost:8080/status/test",
+        //     type: "GET",
+        //     dataType: 'jsonp',
+        //     contentType: "application/json; charset=utf-8",
+        //     // headers: {'Access-Control-Allow-Origin': '*'},
+        //     success: function (response) {
+        //         console.log(response)
+        //     },
+        //     error: function (error) {
+        //         console.log(`error ${error}`)
+        //     }
+        // })
+
+
+        // const url = 'https://jsonplaceholder.typicode.com/posts';
+        const url2 = 'http://localhost:8080/status/test';
+        // $.get(url2, function (data, status) {
+        //     console.log(data)
+        // });
+
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", url2, false); // false for synchronous request
+        xmlHttp.send(null);
+        console.log(xmlHttp.responseText);
+    }
+</script>
+
+</body>
+</html>

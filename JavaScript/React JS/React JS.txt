@@ -1,9 +1,0 @@
-https://www.youtube.com/watch?v=Dorf8i6lCuk
-
-下载最新版Node.js
-cmd到指定目录下启动
-> npm install -g npm@7.24.1
-> npx create-react-app first-react-app 在当前目录创建指定的项目文件目录
-> cd first-react-app
-> npm start
-> npm run build 更新之后重新编译

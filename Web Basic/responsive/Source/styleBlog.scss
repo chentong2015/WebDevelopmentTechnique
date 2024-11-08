@@ -1,0 +1,115 @@
+@import  "base/theme.scss";
+@import "base/animations.scss";
+@import "base/lists.scss";
+
+.top-nav-menu-standard {
+    top: 0; // 绝对定位 
+    left: 0;
+    position: fixed; // 固定在页面的指定位置
+    width: 100%;
+    padding: 5px;
+    background: $color3; // transparent;
+    color: $color1;
+    z-index: 100; // 确保nav标签在页面的元素之上
+ 
+    transition: padding 0.7s;
+    &.reduced { // 页面滚动到下面的时候，动态效果  ==> JavaScript
+        padding: 0px;
+        > div > ul > li > a {
+           padding: 3px 10px;
+        }
+        > div > img {
+            height: 45px;
+        }
+    }
+
+    // > div { } 只选择指定class元素下面的第一个标签元素  
+    .top-nav-container {
+        // 固定显示在页面饿中间container的位置
+        padding: 10px 100px;
+        max-width: 1000px;
+        margin: 0 auto;
+
+        > img {
+            transition: height 0.7s;
+            height: 50px;
+            width: auto;
+
+            // @extend .shake; 可以直接继承calss="shake"所定义的hover的效果
+            &:hover {
+                animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+                transform: translate3d(0, 0,0);
+            }
+        }
+
+        > div {
+            vertical-align: middle;
+            font-size: 22px;
+            display: none; // hidden menu icon by default
+            @media screen and (max-width: 900px) {
+              display: inline-block;
+              float: right;
+              padding: 10px 0px; // 16 + 17 + 16
+            }
+
+            > a {
+                color: $color4;
+                display: inline-block; // 设置成inline，方便动画
+                transition: transform 0.7s ease; // 动画传递的方式：属性+间隔+类型
+                &:hover {
+                    color: green;
+                    transform-origin: 50% 50%; // 动画的变化起始位置是中心 
+                    transform: scale(1.3, 1.3); // hover的时候动态效果 scale大小变化
+                }
+            }
+        }
+
+        > ul { 
+            @extend .reformat-to-horizontal; // 取消默认的样式
+            
+            float: right; // 浮动到页面的右边
+            > li {
+                > a {
+                    font-size: 25px;
+                    padding: 5px 10px;
+                    color: rgb(201, 113, 113);
+                    display: list-item; // 将这里的显示严格的放置到上一层元素范围中 
+                    transition: padding 0.7s ease, color 0.7s ease; // 显示的基础动画
+                }
+            }
+
+            transition: transform 0.7s ease; // 动画传递的方式：属性+间隔+类型
+            @media screen and (max-width: 900px) {
+               float: none;
+               position: absolute; // 使用绝对位置，通过高度来填充整个页面
+               left: 0;
+               right: 0;
+
+               height: 2000%; // 100% 是相对于parent而言的大小
+               background: $color3;
+
+               transform: translate(-100%, 0); // 将要显示的元素隐藏在左边
+               
+               > li  {
+                   width: 100%; // 将Nav的标签显示到整行
+                   text-align: center;
+               }
+               &.expanded { // 对ul元素施加class定义的效果 ==> JavaScript
+                   transform: translate(0,0);
+               }
+            }
+        }
+    }
+}
+
+.mascot-background {
+    height: 400px;
+    margin: 60px 0px;
+    background-size: contain; // 指定图片填充指定的区域
+    background-repeat: no-repeat;
+    background-image: url('/WebHost/Assert/Images/firefox.png');
+    @media screen and (max-width: 900px) {
+        background-position: center top; // 将背景的位置居中 TOP
+    }
+    @extend .slide-in-right-shake; // 使用定义的class属性值的动画效果
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Blog page</title>
+    <!-- 自定义响应设备的页面和缩放的大小 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="Assert/CSS/styleBlog.css" type="text/css">
+    <!-- JS添加的位置，就是执行的位置：该位置会在页面元素加载之前执行 -->
+    <script type="text/javascript" src="Assert/JS/load.js"></script>
+    <script type="text/javascript" src="Assert/JS/scroll.js"></script>
+</head>
+
+<body>
+    <nav class="top-nav-menu-standard slide-in-down" id="top-nav">
+        <!-- 可以减少HTML页面的class的定义 -->
+        <div class="top-nav-container">
+            <img src="Assert/Images/logo.png" alt="My logo">
+            <div>
+                <!-- 这里的topmenu由于#的作用 会调到页面中的定义了id="topmenu"的位置 -->
+                <a href="#topmenu">
+                    <i class="nav-icon">MENU</i>
+                </a>
+            </div>
+            <!-- 可以自定义属性的名称 使用data- -->
+            <ul id="top-nav-ul">
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Youtube</a></li>
+                <li><a href="#">SolidWorks</a></li>
+                <li><a href="#">Software</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <header>
+            <div class="grid-wrapper">
+                <div class="grid">
+                    <div class="col one-half">
+                        <div class="mascot-background"></div>
+                    </div>
+                    <div class="col one-half"> </div>
+                </div>
+            </div>
+        </header>
+    </main>
+
+    <script>
+        // 在页面渲染完成之后再执行的逻辑 
+    </script>
+</body>
+
+</html>

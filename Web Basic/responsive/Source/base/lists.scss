@@ -1,0 +1,9 @@
+
+ul.reformat-to-horizontal {
+    list-style: outside none none;
+    padding: 0;
+    margin: 0;
+    li {  // 选择页面元素下面的所有li
+        display: inline-block;  // 置于一行中
+    }
+}
