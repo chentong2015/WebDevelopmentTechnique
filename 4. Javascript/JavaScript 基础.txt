@@ -45,20 +45,6 @@ JavaScript : 弱类型的编程语言
   		babylonjs   https://www.babylonjs.com/  Web 3D 引擎
   		cesiumjs    https://cesiumjs.org/       Web 3D Mapping and Virtual Globe Platform 
   3 JavaScript Frameworks (Angular与React的JS框架) https://www.technotification.com/2019/05/new-javascript-frameworks-2019.html
-	
-JS 开发框架
-  Node.js和Vue.js写了个博客园的移动端Web App: https://www.cnblogs.com/xuhuale/p/10924576.html 
-  
-  Vue+Element实现网页版个人简历系统  https://www.cnblogs.com/HouJiao/p/12111366.html
-	
-  Vue.js 一个漂亮的动漫站源码 网站地址：https://ebb.io  源码下载：https://github.com/ebb-io/ebbx      
-  Vue.js 注意事项与技巧 https://segmentfault.com/a/1190000018718923
-  vue.js 组件间通信六种方式（完整版） https://segmentfault.com/a/1190000019208626
-  Vue.js 面试题及答案 https://segmentfault.com/a/1190000020097187
-	Vue.js 3：面向未来的编程  https://www.infoq.cn/article/3Bmj5eAmaWfbkpagUu5l
-  Vue MVVM 双向绑定全量版整理  https://www.infoq.cn/article/sGeiocEofyryEbrkYH30
- 
-  Vue2.x基础免费视频教程  https://www.bilibili.com/video/av48858873
 
 JS PDF生成框架
   https://www.jianshu.com/p/4941c7966cc3

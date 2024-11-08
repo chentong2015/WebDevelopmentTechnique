@@ -1,0 +1,3 @@
+Javascript Http Request
+https://livecodestream.dev/post/5-ways-to-make-http-requests-in-javascript/
+https://www.freecodecamp.org/news/here-is-the-most-popular-ways-to-make-an-http-request-in-javascript-954ce8c95aaa/

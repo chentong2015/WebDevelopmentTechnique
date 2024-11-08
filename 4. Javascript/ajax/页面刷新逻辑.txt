@@ -1,0 +1,9 @@
+TODO. 页面刷新的方式
+自动刷新页面的方式: 每隔2秒自动刷新页面
+- 不推荐，会导致倒退页面时的重定向
+- 定期刷新会影响用户体验
+<meta charset="UTF-8" http-equiv="refresh" content="2">
+
+推荐使用Ajax来刷新页面
+- 动态的刷新和加载数据(局部信息)
+- 通过返回的请求数据推送到页面的Event(页面Notification)

@@ -1,0 +1,33 @@
+2020年10大UI设计  http://www.woshipm.com/pd/2646580.html
+2020年页面样式新趋势  https://www.youtube.com/watch?v=-oyeaIirVC0
+
+Fonts UI样式  https://fonts.google.com/
+
+选择样式<link>或@import, 可以下载，自定义部署，避免第三方的使用
+https://transfonter.org/ 转换style样式
+
+Amazing Loading Animation
+https://www.youtube.com/watch?v=QLiZ5VrhA98
+
+Top 10 Stunning CSS 3 Effects For Navigation Bar
+https://www.youtube.com/watch?v=kAGkAJDLYGY
+
+CSS3 https://segmentfault.com/a/1190000019279874
+css如何实现n宫格布局 https://segmentfault.com/a/1190000020216215
+
+CSS创意与视觉表现   https://www.zhangxinxu.com/wordpress/2019/06/cssconf-css-idea/
+CSS 滚动进度条效果  https://www.cnblogs.com/coco1s/p/10244168.html
+CSS custom radio switch ：radio切换效果，左右可选项 https://codyhouse.co/blog/post/how-to-accessible-radio-switch-in-css
+
+CSS 阴影技巧与细节 https://www.cnblogs.com/coco1s/p/9913885.html
+CSS Flexbox 可视化手册 https://segmentfault.com/a/1190000018056228
+使用CSS制作火焰效果 https://www.cnblogs.com/coco1s/p/10605971.html
+SS实现两个球相交的粘粘效果 https://segmentfault.com/a/1190000019171125
+
+CSS盒模型  https://segmentfault.com/a/1190000019810681
+将CSS样式写在JS代码中：Styletron  https://baseweb.design/blog/getting-started-with-styletron/
+使用box shadows+clip-path定义标签：https://css-tricks.com/using-box-shadows-and-clip-path-together/
+CSS flex布局最后一行列表左对齐的N种方法 https://www.zhangxinxu.com/wordpress/2019/08/css-flex-last-align/
+
+零JS代码情况下实现一个实时聊天功能 https://segmentfault.com/a/1190000019242663
+UI时钟和动图特效   https://www.cnblogs.com/juzii/p/5973516.html
