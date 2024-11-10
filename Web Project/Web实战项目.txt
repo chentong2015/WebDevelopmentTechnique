@@ -7,16 +7,11 @@ https://www.youtube.com/watch?v=dgKSqz3it50&t=1144s
 https://www.youtube.com/watch?v=pNcAuqInG6s&t=332s
 https://www.youtube.com/watch?v=L9W33EuGjoY
 
-Googlge clone Search Web Project
+Google clone Search Web Project: React Native Project
 https://www.youtube.com/watch?v=NDbruK1fzG8
 
 Js Chrome Extensions
 https://www.youtube.com/watch?v=iARTHMmmqQA&t=307s
 
-
-支付页面的ＵＩ
+支付页面UI => Payment SDK
 https://freefrontend.com/bootstrap-payment-forms/
-
-Web支付教程
-https://zhuanlan.zhihu.com/p/147764071
-https://www.1024sou.com/article/60949.html
