@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>My Css page</title>
     <!-- href 注意相对的路径 -->
     <!-- CSS 中的内容是按照顺序从上往下解释的 
          下面的样式会对上面的样式有一个覆盖叠加效果 -->
-    <link rel="stylesheet" href="/basicStyle.css" type="text/css" />
+    <link rel="stylesheet" href="basicStyle.css" type="text/css" />
 </head>
 
 <body>
     <h1>my heading 1</h1>
     <h2>my heading 2</h2>
-    <h3>my heading 3</h3>
 
     <p>my text is in here</p>
     <!-- 这里的标签自带有默认的显示效果 但可以自定义 -->
@@ -22,13 +20,11 @@
         <p id="insideDiv">inside div 01</p>
         <p>inside div 02</p>
         <p>inside div 03</p>
-        <!-- .Navbar > span 
-            可以指定div下面一个层级的span被选择 -->
+        <!-- .Navbar > span  可以指定div下面一个层级的span被选择 -->
         <span>my span</span>
         <div>
-            <!-- .Navbar span
-                在针对于span的选择 同样有作用的效果 -->
             <div>
+                <!-- .Navbar span  在针对于span的选择 同样有作用的效果 -->
                 <span>my enbedded span</span>
             </div>
         </div>
@@ -61,7 +57,5 @@
     <footer>
         this is footer
     </footer>
-
 </body>
-
 </html>
