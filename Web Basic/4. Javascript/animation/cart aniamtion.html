@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+    <title>购物车动画</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="jquery.js"></script>
+    <script src="jquery.easing.1.3.min.js"></script>
+</head>
+<body>
+    <img class="googsimg" src="1.jpg" />
+    <br />
+    <div><button>加入购物车</button></div>
+    <div class="nav">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <style type="text/css">
+        body { margin: 0; }
+        .googsimg { width: 200px; height: auto; }
+        .nav { width: 100%; height: 50px; position: fixed; bottom: 0; }
+        ul { margin: 0; padding: 0; }
+        li { margin: 0; padding: 0; list-style: none; float: left; width: 25%; text-align: center; line-height: 50px; height: 50px; border: solid 1px black; box-sizing: border-box; }
+    </style>
+    <script>
+        function AddToCart(fromEl, toEl, callback)
+        {
+            var fromX = fromEl.offset().left
+            var fromY = fromEl.offset().top - $(document).scrollTop()
+            var toX = toEl.offset().left
+            var toY = toEl.offset().top - $(document).scrollTop()
+            var img = document.createElement('img')
+            img.src = fromEl.attr('src')
+            img.style.width = fromEl.width() + 'px'
+            img.style.height = fromEl.height() + 'px'
+            img.style.position = 'fixed'
+            img.style.zIndex = '1000'
+            img.style.left = fromX + 'px'
+            img.style.top = fromY + 'px'
+            document.getElementsByTagName('body')[0].appendChild(img)
+            var fakeEl = $(img)
+            fakeEl.animate({
+                left: toX
+            }, 2000, null, function ()
+            {
+                fakeEl.animate({
+                    width: fromEl.width() * 0.2,
+                    height: fromEl.height() * 0.2,
+                    top: toY
+                }, 2000, null, function ()
+                {
+                    fakeEl.remove()
+                    if (callback)
+                    {
+                        callback()
+                    }
+                })
+            })
+        }
+        $('button').click(function ()
+        {
+            AddToCart($('.googsimg'), $('li').eq(2), function ()
+            {
+                console.log('一件商品已经加入购物车')
+            })
+        })
+    </script>
+	
+	
+	
+	<script>
+    function AddToCart(fromEl, toEl, callback) {
+        var fromX = fromEl.offset().left
+        var fromY = fromEl.offset().top - $(document).scrollTop()
+        var toX = toEl.offset().left
+        var toY = toEl.offset().top - $(document).scrollTop()
+
+
+        var img = document.createElement('img')
+        img.src = fromEl.attr('src')
+        img.style.width = fromEl.width() + 'px'
+        img.style.height = fromEl.height() + 'px'
+        img.style.position = 'fixed'
+        img.style.zIndex = '1000'
+        img.style.left = fromX + 'px'
+        img.style.top = fromY + 'px'
+
+        // 在图层之上创建一个模拟的图片，和原始图片一致
+        // 同时定义图片的移动位置
+        document.getElementsByTagName('body')[0].appendChild(img)
+        var fakeEl = $(img)
+        fakeEl.animate({
+            left: toX
+        }, 700, null, function () {
+            fakeEl.animate({
+                width: fromEl.width() * 0.2,
+                height: fromEl.height() * 0.2,
+                top: toY
+            }, 700, null, function () {
+                fakeEl.remove()
+                if (callback) {
+                    callback()
+                }
+            })
+        })
+    }
+
+    $('button').click(function () {
+        // jQuery class选择器
+        // 选择指定的元素，在指定的时间移动到指定的位置，带有回调函数
+        AddToCart($('.computerComponent'), $('.shoppingCartImage'), function () {
+            console.log('Add ok')
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Css page</title>
+    <!-- href 注意相对的路径 -->
+    <!-- CSS 中的内容是按照顺序从上往下解释的 
+         下面的样式会对上面的样式有一个覆盖叠加效果 -->
+    <link rel="stylesheet" href="basicStyle.css" type="text/css" />
+</head>
+
+<body>
+    <h1>my heading 1</h1>
+    <h2>my heading 2</h2>
+
+    <p>my text is in here</p>
+    <!-- 这里的标签自带有默认的显示效果 但可以自定义 -->
+    <p>this is <strong>strong</strong> sentence with <em>emphasis</em> included </p>
+
+    <div class="Navbar BigPadding">
+        <p id="insideDiv">inside div 01</p>
+        <p>inside div 02</p>
+        <p>inside div 03</p>
+        <!-- .Navbar > span  可以指定div下面一个层级的span被选择 -->
+        <span>my span</span>
+        <div>
+            <div>
+                <!-- .Navbar span  在针对于span的选择 同样有作用的效果 -->
+                <span>my enbedded span</span>
+            </div>
+        </div>
+    </div>
+    <!-- 使用~来选择一个标签之后接着的页面元素 
+         使用+来选择一个标签后接着的第一个元素 -->
+    <p>this is right after the nav bar 01 </p>
+    <p>this is right after the nav bar 02 </p>
+
+    <p>This is link to blog tong <a href="www.chentong.tech">click it</a></p>
+    <span> my next span</span>
+	
+	<!-- 根据input type来选择 -->
+	<form action="testPage">
+	    <!-- 这里input提交的参数会附加在URL/testPage?name=TestName上，用于后端处理是使用 -->
+	   	<input type="text" name="name"/> </br>
+		<input type="submit" value="click button"/> </br>
+	</form>
+
+    <hr />
+    <nav>
+        <a href="#">About us</a>
+    </nav>
+    <article>
+        this is the article
+    </article>
+    <aside>
+        aside content
+    </aside>
+    <footer>
+        this is footer
+    </footer>
+</body>
+</html>

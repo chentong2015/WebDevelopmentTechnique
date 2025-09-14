@@ -1,0 +1,25 @@
+// 自定义通用的样式函数
+@mixin vendor($property, $value) {
+    // 使用 #{} 取属性的字符串，再生成新的属性名称
+    -webkit-#{$property}: $value * 2;
+    -moz-#{$property}: $value * 3;
+    -ms-#{$property}: $value;
+    #{$property}: $value;
+}
+
+// 提供List array作为参数传递
+@mixin setProperty($property, $value...) {
+    // 使用 nth() 来指定要取第几个参数
+    -webkit-#{$property}: nth($list: $value, $n: 1) * 2;
+    -moz-#{$property}: $value * 3;
+    -ms-#{$property}: $value;
+    #{$property}: $value;
+}
+
+// 同时设置某个元素的hover和focus成指定的content内容的值
+@mixin setHoverAndFocus() {
+    &:hover &:focus {
+        // 拿到函数传递的内容
+        @content;
+    }
+}

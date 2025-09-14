@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excel To JSON Converter</title>
+    <meta
+      name="description"
+      content="The Excel to JSON converter app is a tool that
+      enables users to easily convert Excel files into JSON format.
+      With this app, users can select an Excel file from their computer,
+      specify the sheet they want to convert,
+      the app will generate a JSON file containing the data from the selected sheet.
+      This app can be helpful for developers or
+      data analysts who need to work with JSON formatted data,
+      or for anyone who wants to convert Excel files into a more flexible format for data processing."
+    />
+    <meta name="keywords" content="excel to json converter" />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"
+      integrity="sha512-ml/QKfG3+Yes6TwOzQb7aCNtJF4PUyha6R3w8pSTo/VJSywl7ZreYvvtUso7fKevpsI+pYVVwnu82YO0q3V6eg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- MDB -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"
+      integrity="sha512-r22gChDnGvBylk90+2e/ycr3RVrDi8DIOkIGNhJlKfuyQM4tIRAI062MaV8sfjQKYVGjOBaZBOA87z+IhZE9DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light container">
+      <div class="container">
+        <span class="navbar-brand mb-0 h1">Excel To JSON Converter</span>
+      </div>
+    </nav>
+    <div class="container mt-3 mb-3 rounded shadow-4 border border-primary p-5">
+      <form>
+        <label for="file">Select a Excel File</label>
+        <input type="file" class="form-control mb-2" id="file" />
+
+        <label for="page">Select Sheet</label>
+        <select id="page" onchange="afterSelect()" class="form-control mb-2">
+          <option value="">Select Sheets</option>
+        </select>
+
+        <label for="json">JSON DATA</label>
+        <textarea id="json" cols="30" rows="10" class="form-control mb-2"></textarea>
+        <a href="" id="download" class="btn btn-primary">Download JSON</a>
+      </form>
+    </div>
+
+    <div class="container p-3 mt-3 shadow-4 rounded">
+      <h2 class="w-100 text-center">How To Use</h2>
+      <hr />
+      <ul class="list-unstyled">
+        <li class="mb-1">
+          <i class="fas fa-check-circle me-2 text-success"></i>Open the App
+        </li>
+        <li class="mb-1">
+          <i class="fas fa-check-circle me-2 text-success"></i>Once the app is
+          loaded, you will see a navigation bar at the top with the title "Excel
+          To JSON Converter."
+        </li>
+        <li class="mb-1">
+          <i class="fas fa-check-circle me-2 text-success"></i> Scroll down to
+          the main section of the app, where you will see a form that you can
+          fill out to convert an Excel file to JSON format.
+        </li>
+        <li class="mb-1">
+          <i class="fas fa-check-circle me-2 text-success"></i> Click the
+          "Select a Excel File" button to browse and select the Excel file that
+          you want to convert.
+        </li>
+        <li class="mb-1">
+          <i class="fas fa-check-circle me-2 text-success"></i>After selecting
+          the Excel file, you will see a drop-down list labeled "Select Sheet"
+          that allows you to choose the sheet you want to convert.
+        </li>
+        <li class="mb-1">
+          <i class="fas fa-check-circle me-2 text-success"></i>Choose the sheet
+          you want to convert from the drop-down list.
+        </li>
+        <li class="mb-1">
+          <i class="fas fa-check-circle me-2 text-success"></i>The converted
+          JSON data will be displayed in the text area labeled "JSON DATA".
+        </li>
+        <li class="mb-1">
+          <i class="fas fa-check-circle me-2 text-success"></i>If you want to
+          download the JSON data, click the "Download JSON" button.
+        </li>
+        <li class="mb-1">
+          <i class="fas fa-check-circle me-2 text-success"></i>Save the JSON
+          file to your computer.
+        </li>
+      </ul>
+      <hr />
+      <p class="text-center">
+        And that's it! The app has now successfully converted your Excel file to
+        JSON format.
+      </p>
+    </div>
+
+    <footer class="bg-light text-center text-white container">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Facebook -->
+          <a
+            class="btn text-white btn-floating m-1"
+            style="background-color: #3b5998"
+            href="https://facebook.com/codewithsundeep1"
+            role="button"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <!-- Facebook -->
+          <a
+            class="btn text-white btn-floating m-1"
+            style="background-color: red"
+            href="https://youtube/codewithsundeep"
+            role="button"
+            ><i class="fab fa-youtube"></i
+          ></a>
+
+          <!-- Instagram -->
+          <a
+            class="btn text-white btn-floating m-1"
+            style="background-color: #ac2bac"
+            href="https://instagram.com/codewithsundeep1"
+            role="button"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <!-- Github -->
+          <a
+            class="btn text-white btn-floating m-1"
+            style="background-color: #333333"
+            href="https://github.com/codewithsundeep"
+            role="button"
+            ><i class="fab fa-github"></i
+          ></a>
+        </section>
+        <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="https://b.codewithsundeep.com"
+          >codewithsundeep.com</a
+        >
+      </div>
+      <!-- Copyright -->
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

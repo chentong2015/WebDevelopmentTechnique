@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Status Page</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/jquery-3.6.0.min.js"></script>
+    <script src="../static/js/jquery.easing.min.js"></script>
+
+    <style>
+        .toast {
+            left: 50%;
+            position: fixed;
+            transform: translate(-50%, 0px);
+            z-index: 9999;
+        }
+    </style>
+</head>
+
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand">Order Status Page</a>
+    </div>
+</nav>
+
+<body>
+<div>
+    <!-- Use table to contain these infos -->
+    <p>Your Order Id: xxx</p>
+    <p>Order details: </p>
+    <p>Order status: on processing ...</p>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+             aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+    </div>
+    <br>
+
+    <div style="text-align:center;">
+        <button type="submit" class="btn btn-success"
+                style="width: 240px; height: 50px; margin-top: 40px; margin-bottom: 50px;">
+            Order Computer
+        </button>
+    </div>
+
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+            <b> Confirmation of your selection. </b>
+            <p> Make sure you select all you want ! </p>
+            <div class="mt-2 pt-2 border-top">
+                <a href="demo.html" class="btn btn-primary btn-sm" role="button">Take action</a>
+                <a href="#" class="btn btn-secondary btn-sm" role="button">Close</a>
+
+                <!--  <form action="demo.html">
+                     <button type="button" class="btn btn-primary btn-sm">Take action</button>
+                 </form>
+                 <form action="#">
+                     <button type="button" class="btn btn-secondary btn-sm">Close</button>
+                 </form> -->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<footer class="bg-dark text-center text-white">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        ©2022 Copyright - Murex, All rights reserved.
+    </div>
+</footer>
+
+<script>
+    $('.btn-success').click(function () {
+        $('.toast').show();
+    })
+    $('.btn-secondary').click(function () {
+        $('.toast').hide();
+    })
+</script>
+
+</html>

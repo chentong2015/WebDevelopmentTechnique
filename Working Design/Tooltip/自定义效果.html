@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {color:red;}
+p {color:blue;}
+
+.info-wrapper {
+  position: relative; /* tooltip 绝对定位的参考 */
+  display: inline-block;
+}
+
+/* 默认隐藏 tooltip */
+.info-tooltip {
+  display: none;
+  position: absolute;
+  top: -30px;          /* 调整垂直位置 */
+  left: 100%;         /* 靠右侧显示 */
+  background-color: #7e7c7c; /* 灰色背景 */
+  color: #fff;           /* 白色文字 */
+  padding: 6px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 12px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+
+  min-width: 300px;
+  max-width: 300px;        /* 最大宽度 */
+  white-space: normal;     /* 允许换行 */
+  word-wrap: break-word;   /* 长单词自动换行 */
+  word-break: break-word;  /* 兼容性处理 */
+}
+
+/* tooltip 箭头 
+.info-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -5px;  箭头指向 icon 
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #555 transparent transparent;
+} */
+
+/* 点击 icon 显示 tooltip */
+.info-wrapper.show-tooltip .info-tooltip {
+  display: block;
+}
+
+
+
+/* 隐藏默认 checkbox */
+.custom-checkbox {
+  width: 16px;
+  height: 16px;
+  margin-left: 15px !important;
+  vertical-align: middle;
+
+  appearance: none;
+  -webkit-appearance: none;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* hover 或 focus 效果（可选） */
+.custom-checkbox:hover {
+  border-color: #008039;
+}
+
+/* 勾选后显示绿色背景 */
+.custom-checkbox:checked {
+  background-color: #008039;
+  border-color: #008039;
+}
+
+/* 勾选后的对勾 */
+.custom-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+</style>
+</head>
+<body>
+
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+
+<div class="info-wrapper">
+
+  <input type="checkbox" id="isTechnicalUser" name="isTechUser" style="margin-left: 15px !important; vertical-align: middle;">
+  <label class="field-label ng-tns-c1-9 ng-star-inserted" for="isTechnicalUser" style="font-size: 13px; margin-left: 5px;">
+      administration.users.wum.isTechUser</label>
+
+  <i class="fa-lg fa fa-info-circle message-info">asda</i>
+  <span class="info-tooltip">API users cannot access the front-end application and their password does not expire.</span>
+</div>
+
+
+<input type="checkbox" id="isTechnicalUser" name="isTechUser" class="custom-checkbox">
+
+<script>
+  // 等页面加载完
+  document.addEventListener('DOMContentLoaded', function() {
+    // 获取所有 info icon
+    const icons = document.querySelectorAll('.info-wrapper .message-info');
+
+    icons.forEach(function(icon) {
+      icon.addEventListener('click', function(event) {
+        const wrapper = icon.closest('.info-wrapper');
+        if (wrapper) {
+          // 切换显示/隐藏
+          wrapper.classList.toggle('show-tooltip');
+        }
+      });
+    });
+
+    // 可选：点击页面其他地方隐藏 tooltip
+    document.addEventListener('click', function(event) {
+      icons.forEach(function(icon) {
+        const wrapper = icon.closest('.info-wrapper');
+        if (wrapper && !wrapper.contains(event.target)) {
+          wrapper.classList.remove('show-tooltip');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

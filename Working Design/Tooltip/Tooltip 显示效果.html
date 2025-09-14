@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Tooltip 功能修复</title>
+    <!-- Angular Material 主题 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@angular/material@13.4.0/prebuilt-themes/indigo-pink.css">
+    <!-- Font Awesome 图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- 加载 Angular Material 的 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@angular/material@13.4.0/bundles/material.umd.min.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #3f51b5;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        h2 {
+            color: #3f51b5;
+            margin-top: 25px;
+            font-weight: 500;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 8px;
+        }
+
+        .example-section {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #3f51b5;
+        }
+
+        .code-block {
+            background-color: #263238;
+            color: #e0e0e0;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .user-form {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .checkbox-label {
+            display: inline-flex;
+            align-items: center;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .info-icon {
+            color: #3f51b5;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .note {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #2196f3;
+        }
+
+        .note-header {
+            font-weight: 500;
+            color: #1565c0;
+            margin-bottom: 8px;
+        }
+
+        .import-code {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            border-left: 4px solid #4caf50;
+        }
+
+        .module-code {
+            background-color: #fff3e0;
+            color: #ef6c00;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            border-left: 4px solid #ff9800;
+        }
+
+        .fixed-tooltip {
+            position: relative;
+            display: inline-block;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .working-example {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Angular Material Tooltip 功能修复</h1>
+        
+        <div class="note">
+            <div class="note-header">问题修复：</div>
+            <p>由于我们无法直接运行Angular应用，这里提供了两种解决方案：</p>
+            <ol>
+                <li>使用纯HTML/CSS/JS实现Tooltip功能</li>
+                <li>展示正确的Angular代码结构</li>
+            </ol>
+        </div>
+        
+        <div class="working-example">
+            <h2>工作示例 (使用纯HTML/CSS/JS)</h2>
+            <div class="fixed-tooltip">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="isTechnicalUserJs">
+                    技术用户
+                    <i class="fa fa-info-circle info-icon" id="tooltip-icon"></i>
+                </label>
+                <div class="tooltip-text" id="tooltip">
+                    技术用户拥有系统管理权限，可以访问所有功能模块
+                </div>
+            </div>
+        </div>
+        
+        <div class="import-code">
+// 在模块中导入
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+        </div>
+        
+        <div class="module-code">
+@NgModule({
+  imports: [
+    // ...
+    MatTooltipModule,
+    BrowserAnimationsModule
+  ],
+  // ...
+})
+export class AppModule { }
+        </div>
+        
+        <h2>用户信息表单 (Angular版本)</h2>
+        
+        <div class="user-form">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" placeholder="请输入用户名">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">邮箱</label>
+                <input type="email" id="email" placeholder="请输入邮箱地址">
+            </div>
+            
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="isTechnicalUser">
+                    技术用户
+                    <i class="fa fa-info-circle info-icon"
+                       matTooltip="技术用户拥有系统管理权限，可以访问所有功能模块"
+                       matTooltipPosition="left"></i>
+                </label>
+            </div>
+        </div>
+        
+        <h2>代码示例</h2>
+        
+        <div class="example-section">
+            <p>以下是在HTML模板中使用matTooltip的代码：</p>
+            
+            <div class="code-block">
+&lt;div *ngIf="!this.fieldsMap.username.show"&gt;
+    &lt;input type="checkbox" id="isTechnicalUser" name="isTechUser" 
+           style="margin-left: 10px !important; vertical-align: middle;"&gt;
+    &lt;label class="field-label ng-tns-c1-9 ng-star-inserted" for="isTechnicalUser" 
+           style="font-size: 13px; margin-left: 5px;"&gt;
+        {{'administration.users.wum.isTechUser' | translate}}
+    &lt;/label&gt;
+    &lt;i class="fa-lg fa fa-info-circle message-info"
+       matTooltip="{{'administration.users.wum.isTechUser.info' | translate}}"
+       matTooltipPosition="right" style="margin-left: 10px; cursor: pointer;"&gt;&lt;/i&gt;
+&lt;/div&gt;
+            </div>
+        </div>
+        
+        <div class="example-section">
+            <p>确保在组件中正确导入MatTooltipModule：</p>
+            
+            <div class="code-block">
+import { Component } from '@angular/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+@Component({
+  selector: 'app-user-form',
+  templateUrl: './user-form.component.html',
+  styleUrls: ['./user-form.component.css']
+})
+export class UserFormComponent {
+  // 组件逻辑
+}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 纯JS实现Tooltip功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const tooltipIcon = document.getElementById('tooltip-icon');
+            const tooltip = document.getElementById('tooltip');
+            
+            tooltipIcon.addEventListener('mouseover', function() {
+                tooltip.classList.add('show');
+            });
+            
+            tooltipIcon.addEventListener('mouseout', function() {
+                tooltip.classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>

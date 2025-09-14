@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>紧挨着图标的Tooltip</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            padding: 30px;
+            width: 90%;
+            max-width: 650px;
+        }
+        
+        h1 {
+            color: #3f51b5;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .description {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .form-container {
+            background: #f9fafc;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .form-title {
+            color: #3f51b5;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #444;
+        }
+        
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            border-color: #3f51b5;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: #3f51b5;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .info-icon {
+            color: #3f51b5;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip {
+            visibility: hidden;
+            width: 220px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 12px;
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            font-size: 14px;
+            line-height: 1.5;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* 右侧Tooltip */
+        .tooltip-right {
+            top: 50%;
+            left: 100%;
+            margin-left: 15px;
+            transform: translateY(-50%);
+        }
+        
+        .tooltip-right::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent #555 transparent transparent;
+        }
+        
+        /* 左侧Tooltip */
+        .tooltip-left {
+            top: 50%;
+            right: 100%;
+            margin-right: 15px;
+            transform: translateY(-50%);
+        }
+        
+        .tooltip-left::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent transparent #555;
+        }
+        
+        /* 上方Tooltip */
+        .tooltip-top {
+            bottom: 100%;
+            left: 50%;
+            margin-bottom: 15px;
+            transform: translateX(-50%);
+        }
+        
+        .tooltip-top::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+        
+        /* 下方Tooltip */
+        .tooltip-bottom {
+            top: 100%;
+            left: 50%;
+            margin-top: 15px;
+            transform: translateX(-50%);
+        }
+        
+        .tooltip-bottom::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent #555 transparent;
+        }
+        
+        .info-icon:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .example-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f5f8ff;
+            border-radius: 8px;
+            border-left: 4px solid #3f51b5;
+        }
+        
+        .example-title {
+            color: #3f51b5;
+            margin-bottom: 15px;
+        }
+        
+        .position-selector {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .position-btn {
+            padding: 8px 15px;
+            background: #e8eaf6;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .position-btn.active {
+            background: #3f51b5;
+            color: white;
+        }
+        
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', monospace;
+            font-size: 14px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>紧挨着图标的Tooltip实现</h1>
+        <p class="description">此示例展示了如何创建紧挨着信息图标的Tooltip，无需任何JavaScript库</p>
+        
+        <div class="form-container">
+            <h2 class="form-title">用户注册表单</h2>
+            
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" placeholder="请输入用户名">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">邮箱地址</label>
+                <input type="email" id="email" placeholder="请输入邮箱地址">
+            </div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="technicalUser">
+                <label class="checkbox-label" for="technicalUser">
+                    技术用户
+                    <span class="info-icon">
+                        <i class="fa fa-info-circle"></i>
+                        <span class="tooltip tooltip-right">
+                            技术用户拥有系统管理权限，可以访问所有功能模块
+                        </span>
+                    </span>
+                </label>
+            </div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="notification">
+                <label class="checkbox-label" for="notification">
+                    接收通知
+                    <span class="info-icon">
+                        <i class="fa fa-info-circle"></i>
+                        <span class="tooltip tooltip-right">
+                            启用后，系统将通过邮件发送重要通知和更新信息
+                        </span>
+                    </span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="example-section">
+            <h3 class="example-title">Tooltip位置示例</h3>
+            <p>选择不同的位置查看Tooltip效果：</p>
+            
+            <div class="position-selector">
+                <button class="position-btn active" data-position="right">右侧</button>
+                <button class="position-btn" data-position="left">左侧</button>
+                <button class="position-btn" data-position="top">上方</button>
+                <button class="position-btn" data-position="bottom">下方</button>
+            </div>
+            
+            <div style="text-align: center; padding: 20px;">
+                <span class="info-icon" id="demo-icon">
+                    <i class="fa fa-info-circle"></i>
+                    <span class="tooltip tooltip-right" id="demo-tooltip">
+                        这是一个Tooltip示例，可以根据选择的位置显示在图标的不同侧
+                    </span>
+                </span>
+            </div>
+        </div>
+        
+        <div class="example-section">
+            <h3 class="example-title">实现代码</h3>
+            <p>以下是如何创建紧挨着图标的Tooltip的HTML和CSS代码：</p>
+            
+            <div class="code-block">
+&lt;span class="info-icon"&gt;
+    &lt;i class="fa fa-info-circle"&gt;&lt;/i&gt;
+    &lt;span class="tooltip tooltip-right"&gt;
+        这是Tooltip内容
+    &lt;/span&gt;
+&lt;/span&gt;
+            </div>
+            
+            <div class="code-block">
+/* CSS样式 */
+.info-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 220px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 12px;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-right {
+    top: 50%;
+    left: 100%;
+    margin-left: 15px;
+    transform: translateY(-50%);
+}
+
+.tooltip-right::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+}
+
+.info-icon:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>无需JavaScript库，纯CSS实现 | 响应式设计 | 2023</p>
+        </div>
+    </div>
+
+    <script>
+        // 简单的JavaScript用于切换Tooltip位置
+        document.addEventListener('DOMContentLoaded', function() {
+            const positionButtons = document.querySelectorAll('.position-btn');
+            const demoIcon = document.getElementById('demo-icon');
+            const demoTooltip = document.getElementById('demo-tooltip');
+            
+            positionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 移除所有active类
+                    positionButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // 添加active类到当前按钮
+                    this.classList.add('active');
+                    
+                    // 获取位置
+                    const position = this.getAttribute('data-position');
+                    
+                    // 移除所有位置类
+                    demoTooltip.classList.remove('tooltip-right', 'tooltip-left', 'tooltip-top', 'tooltip-bottom');
+                    
+                    // 添加新位置类
+                    demoTooltip.classList.add(`tooltip-${position}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
