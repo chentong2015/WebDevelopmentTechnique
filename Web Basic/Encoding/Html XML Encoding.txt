@@ -1,5 +1,4 @@
-TODO. Html Page标签页面
-特殊字符需要编码后才能有效显示
+TODO. Html Page标签: 特殊字符需要编码后才能有效显示
 Character Name       Character Entity
 &   ampersand          &amp;
 <   lessthan           &lt;
@@ -9,7 +8,10 @@ Character Name       Character Entity
 ©   Copyright          &copy;
 nonbreaking space      &nbsp;
 
-TODO. XML 标签格式文件
+TODO. XML 标签格式: 特殊字符必须转义才能使文件有效
 文件中特殊字符需要编码处理(替代原始字符)才能保证XML格式有效
 <title name="this is name value" />
 <title name="this is &quot;name&quot; value" />
+<tag> ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~ </tag>
+
+https://www.w3.org/TR/xml/#syntax
