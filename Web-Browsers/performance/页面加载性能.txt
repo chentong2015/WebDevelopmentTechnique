@@ -1,0 +1,2 @@
+录制整个页面加载的流程
+查看是否有"Scripting"(JS 执行)或"Recalculate Style"或"Layout"时间过长
