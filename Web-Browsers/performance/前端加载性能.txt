@@ -1,0 +1,4 @@
+录制整个页面加载的流程:
+"Scripting"(JS 执行)
+"Recalculate Style"
+"Layout"时间过长
