@@ -13,22 +13,24 @@ class AsyncLoadingComponent implements OnInit, AfterViewInit, OnDestroy {
     ngAfterViewInit(): void {
     }
 
-    // TODO. View页面销毁时清除缓存
+    // TODO. 只有在组件真正被销毁时才执行, 并非View页面跳转 ?
     ngOnDestroy(): void {
         this.statsCache.clear();
     }
 
-    // TODO. 判断缓存中是否存在，反之获取新数据并添加到缓存中
+    // TODO. 后端API执行数据的计算需要一定的时间
     // @ts-ignore
     public getStats(workflowExecutionPublicId: string): Observable<ImportStatsModel> {
         if (!workflowExecutionPublicId) {
             return of({ conflictCount: 0, errorCount: 0, warningCount: 0 });
         }
+
+        // 判断缓存中是否存在，反之获取新数据并添加到缓存中
         if (this.statsCache.has(workflowExecutionPublicId)) {
             return this.statsCache.get(workflowExecutionPublicId)!;
         }
 
-        // 后端API执行数据的计算需要一定的时间
+        // 请求需要显式处理Timeout Error
         // @ts-ignore
         // const stats$ = defer(() =>
         //     this.importHttpService.findStats(id).pipe(
@@ -42,6 +44,9 @@ class AsyncLoadingComponent implements OnInit, AfterViewInit, OnDestroy {
         //         })
         //     )
         // ).pipe(shareReplay(1));
+
+        // shareReplay要搭配catchError否则timeout会被永久缓存
+        // 异常时stats$会变成error Observable数据
         this.statsCache.set(workflowExecutionPublicId, stats$);
     }
 
