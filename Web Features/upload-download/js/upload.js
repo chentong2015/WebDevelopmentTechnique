@@ -1,0 +1,84 @@
+const singleUploadForm = document.querySelector('#singleUploadForm');
+const singleFileUploadInput = document.querySelector('#singleFileUploadInput');
+
+const multipleUploadForm = document.querySelector('#multipleUploadForm');
+const multipleFileUploadInput = document.querySelector('#multipleFileUploadInput');
+
+const fileUploadError = document.querySelector('#fileUploadError');
+const fileUploadSuccess = document.querySelector('#fileUploadSuccess');
+
+singleUploadForm.addEventListener('submit', function(event){
+    const files = singleFileUploadInput.files;
+    if(files.length === 0) {
+        fileUploadError.innerHTML = "Please select a file";
+        fileUploadSuccess.style.display = "block";
+    }
+    uploadSingleFile(files[0]);
+    event.preventDefault();
+}, true);
+
+function uploadSingleFile(file) {
+    showLoading();
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const xmlHttpRequest = new XMLHttpRequest();
+    xmlHttpRequest.open("POST", "http://localhost:8080/v1/file/upload/single");
+
+    // Callback回调函数
+    xmlHttpRequest.onload = function () {
+        hideLoading();
+        showModal("Upload Success", xmlHttpRequest.responseText);
+        singleFileUploadInput.value = '';
+    };
+    xmlHttpRequest.onerror = function () {
+        hideLoading();
+        showModal("Upload Failed", xmlHttpRequest.responseText);
+    };
+    xmlHttpRequest.send(formData);
+}
+
+multipleUploadForm.addEventListener('submit', function(event){
+    const files = multipleFileUploadInput.files;
+    if(files.length === 0) {
+        fileUploadError.innerHTML = "Please select at least one file";
+        fileUploadSuccess.style.display = "block";
+    }
+    uploadMultipleFiles(files);
+    event.preventDefault();
+}, true);
+
+function uploadMultipleFiles(files) {
+    showLoading();
+
+    const formData = new FormData();
+    for(let index = 0; index < files.length; index++) {
+        formData.append("files", files[index]);
+    }
+    const xmlHttpRequest = new XMLHttpRequest();
+    xmlHttpRequest.open("POST", "http://localhost:8080/v1/file/upload/multiple");
+
+    xmlHttpRequest.onload = function () {
+        hideLoading();
+        showModal("Upload Success", xmlHttpRequest.responseText);
+        multipleFileUploadInput.value = '';
+    };
+    xmlHttpRequest.onerror = function () {
+        hideLoading();
+        showModal("Upload Failed", xmlHttpRequest.responseText);
+    };
+    xmlHttpRequest.send(formData);
+}
+
+// TODO. 如果后端返回Object对象则需要解析
+// const response = JSON.parse(xmlHttpRequest.responseText);
+function handleUploadResponse(xmlHttpRequest) {
+    if (xmlHttpRequest.status === 200) {
+        fileUploadError.style.display = "none";
+        fileUploadSuccess.innerHTML = "<b> Success ! " + xmlHttpRequest.responseText + "</b>";
+        fileUploadSuccess.style.display = "block";
+    } else {
+        fileUploadSuccess.style.display = "none";
+        fileUploadError.innerHTML = "<b> Error: Upload failed </b>";
+    }
+}
