@@ -7,6 +7,7 @@ async function loadFiles() {
             renderList(data);
         }
     } catch (error) {
+        alert(error);
         console.error(error);
     }
 }
@@ -25,11 +26,12 @@ function renderList(files) {
         li.style.cursor = "pointer";
         li.style.color = "#128ff2";
         li.onclick = function () {
-            downloadFile(file);
+            window.location.href = "http://localhost:8080/v1/file/download/" + encodeURIComponent(file);
         };
         ul.appendChild(li);
     });
 }
+
 
 // TODO. 标准资源文件下载的JS前端实现
 function downloadFile(fileName) {
