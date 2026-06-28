@@ -38,3 +38,10 @@
     from {transform: rotate(0deg);}
     to {transform: rotate(360deg);}
 }
+
+.progress-text {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2196F3;
+}
