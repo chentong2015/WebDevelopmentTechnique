@@ -17,39 +17,44 @@
             </div>
         </div>
 
-        <div class="upload-container">
-            <div class="upload-header">
-                <h2>File Processing Application</h2>
-            </div>
-            <div class="upload-content">
-                <div class="single-upload">
-                    <h3>Upload Single File</h3>
-                    <form id="singleUploadForm" name="singleUploadForm">
-                        <input id="singleFileUploadInput" type="file" name="file" class="file-input" required />
-                        <button type="submit" class="primary submit-btn">Submit</button>
-                    </form>
-                </div>
-                <div class="multiple-upload">
-                    <h3>Upload Multiple Files</h3>
-                    <form id="multipleUploadForm" name="multipleUploadForm">
-                        <input id="multipleFileUploadInput" type="file" name="files" class="file-input" multiple required />
-                        <button type="submit" class="primary submit-btn">Submit</button>
-                    </form>
-                </div>
-                <div class="chunk-upload">
-                    <h3>Upload Big File by Chunk</h3>
-                    <form id="chunkUploadForm" name="chunkUploadForm">
-                        <input id="chunkFileUploadInput" type="file" name="file" class="file-input" required />
-                        <button type="submit" class="primary submit-btn">Submit</button>
-                    </form>
-                </div>
-            </div>
+        <div class="upload-header">
+            <h2>File Processing Application</h2>
         </div>
 
-        <div id="download-container">
-            <h3>Download File List</h3>
-            <button onclick="loadFiles()">Refresh</button>
-            <ul id="fileList"></ul>
+        <div class="page-wrapper">
+            <div class="upload-container">
+                <div class="upload-content">
+                    <div class="single-upload">
+                        <h3>Upload Single File</h3>
+                        <form id="singleUploadForm" name="singleUploadForm">
+                            <input id="singleFileUploadInput" type="file" name="file" class="file-input" required />
+                            <button type="submit" class="primary submit-btn">Submit</button>
+                        </form>
+                    </div>
+                    <div class="chunk-upload">
+                        <h3>Upload Big File by Chunk</h3>
+                        <form id="chunkUploadForm" name="chunkUploadForm">
+                            <input id="chunkFileUploadInput" type="file" name="file" class="file-input" required />
+                            <button type="submit" class="primary submit-btn">Submit</button>
+                        </form>
+                    </div>
+                    <br>
+                    <div class="multiple-upload">
+                        <h3>Upload Multiple Files</h3>
+                        <form id="multipleUploadForm" name="multipleUploadForm">
+                            <input id="multipleFileUploadInput" type="file" name="files" class="file-input" multiple required />
+                            <button type="submit" class="primary submit-btn">Submit</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="download-container">
+                <h3>Download File List</h3>
+                <button onclick="loadFiles()">Refresh</button>
+                <ul id="fileList"></ul>
+            </div>
         </div>
 
         <!-- Result Response Model -->
@@ -67,6 +72,10 @@
             </div>
         </div>
     </body>
+
+    <footer class="page-footer">
+        <p>2026 File Processing Application. All Rights Reserved.</p>
+    </footer>
 
     <script src="js/download.js"></script>
     <script src="js/loading.js"></script>
