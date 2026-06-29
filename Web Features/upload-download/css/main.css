@@ -55,6 +55,7 @@ button {
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     min-height: 38px;
+    background-color: #79a830;
 }
 
 button.primary {
@@ -95,6 +96,27 @@ input[type="file"] {
     }
 }
 
+
+.app-header {
+    padding: 18px 24px;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #128ff2, #4aa3ff);
+    color: #fff;
+    border-radius: 0px;
+    box-shadow: 0 6px 18px rgba(18, 143, 242, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.app-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+
 .page-wrapper {
     display: flex;
     gap: 20px;
@@ -102,14 +124,6 @@ input[type="file"] {
     margin: 60px auto;
     padding: 0 20px;
     align-items: flex-start;
-}
-
-#download-container {
-    flex: 1;
-    background: #fff;
-    padding: 20px;
-    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
-    min-height: 450px;
 }
 
 .upload-container {
@@ -123,25 +137,6 @@ input[type="file"] {
     padding: 20px;
 }
 
-.upload-header {
-    padding: 18px 24px;
-    margin-bottom: 25px;
-    background: linear-gradient(135deg, #128ff2, #4aa3ff);
-    color: #fff;
-    border-radius: 0px;
-    box-shadow: 0 6px 18px rgba(18, 143, 242, 0.25);
-    position: relative;
-    overflow: hidden;
-}
-
-.upload-header h2 {
-    margin: 0;
-    font-size: 1.4rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
-}
-
 .single-upload {
     padding-bottom: 20px;
     margin-bottom: 20px;
@@ -153,7 +148,38 @@ input[type="file"] {
     word-break: break-all;
 }
 
-.page-footer {
+
+#download-container {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+    min-height: 450px;
+}
+
+.download-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.download-header h3 {
+    margin: 0;
+}
+
+#fileList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-height: 350px; /* 关键：限制高度 */
+    overflow-y: auto;  /* 关键：开启垂直滚动 */
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+
+.app-footer {
     text-align: center;
     padding: 15px 10px;
     margin-top: 40px;

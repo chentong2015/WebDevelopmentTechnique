@@ -8,6 +8,10 @@
         <link rel="stylesheet" href="css/result-model.css" />
     </head>
     <body>
+        <div class="app-header">
+            <h2>File Processing Application</h2>
+        </div>
+
         <!-- Loading Mask -->
         <div id="loadingMask" class="loading-mask">
             <div class="loading-box">
@@ -15,10 +19,6 @@
                 <div class="loading-text">Uploading... Please wait a second</div>
                 <div id="uploadProgressText" class="progress-text">0%</div>
             </div>
-        </div>
-
-        <div class="upload-header">
-            <h2>File Processing Application</h2>
         </div>
 
         <div class="page-wrapper">
@@ -46,13 +46,14 @@
                             <button type="submit" class="primary submit-btn">Submit</button>
                         </form>
                     </div>
-
                 </div>
             </div>
 
             <div id="download-container">
-                <h3>Download File List</h3>
-                <button onclick="loadFiles()">Refresh</button>
+                <div class="download-header">
+                    <h3>Download File List</h3>
+                    <button onclick="loadFiles()" class="refresh-btn">Refresh</button>
+                </div>
                 <ul id="fileList"></ul>
             </div>
         </div>
@@ -73,7 +74,7 @@
         </div>
     </body>
 
-    <footer class="page-footer">
+    <footer class="app-footer">
         <p>2026 File Processing Application. All Rights Reserved.</p>
     </footer>
 

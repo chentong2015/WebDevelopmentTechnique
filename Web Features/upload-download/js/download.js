@@ -1,7 +1,9 @@
 async function loadFiles() {
     try {
         // response data format is List<String>
-        const response = await fetch('http://localhost:8080/v1/file/all', {method: 'GET'});
+        const response = await fetch('http://localhost:8080/v1/file/download/all', {
+            method: 'GET'
+        });
         if (response.ok) {
             const data = await response.json();
             renderList(data);
