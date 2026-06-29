@@ -12,3 +12,10 @@ function resumeUpload() {
         // uploadWithResume(pendingFile);
     }
 }
+
+// 不推荐使用localStorage存储上传进度, 应该由后端存储
+function updateChunkIndex(fileId) {
+    // let uploadedIndex = localStorage.getItem(fileId) || 0;
+    // localStorage.setItem(fileId, i + 1);
+    // localStorage.removeItem(fileId);
+}

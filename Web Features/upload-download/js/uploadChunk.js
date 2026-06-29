@@ -11,14 +11,15 @@ chunkUploadForm.addEventListener('submit', function(event){
     event.preventDefault();
 }, true);
 
-// TODO. Chunk分片上传: 定义上传文件的唯一ID, 并记录上传进度
+// TODO. Chunk分片上传: 定义上传文件唯一ID, 并记录上传进度
 async function uploadWithChunks(file) {
+    showLoading();
+    uploadProgressText.innerText = "0%";
+
     const chunks = createChunks(file);
     const timestamp = Math.floor(Date.now() / 1000);
     const fileId = file.name + "-" + timestamp;
-
-    let uploadedIndex = localStorage.getItem(fileId) || 0;
-    for (let i = uploadedIndex; i < chunks.length; i++) {
+    for (let i = 0; i < chunks.length; i++) {
         const formData = new FormData();
         formData.append("file", chunks[i], file.name);
         formData.append("index", i);
@@ -26,8 +27,9 @@ async function uploadWithChunks(file) {
         formData.append("fileId", fileId);
 
         try {
+            // 暂停当前函数, 等uploadChunk完成再继续 => 接收resolve()通知
             await uploadChunk(formData);
-            localStorage.setItem(fileId, i + 1);
+
             const percent = Math.round(((i + 1) / chunks.length) * 100);
             uploadProgressText.innerText = percent + "%";
             chunkFileUploadInput.value = '';
@@ -37,7 +39,7 @@ async function uploadWithChunks(file) {
             return; // 停止上传，等待恢复
         }
     }
-    localStorage.removeItem(fileId);
+    hideLoading();
     showModal("Success", "Upload completed", "success");
 }
 
@@ -53,6 +55,9 @@ function createChunks(file, chunkSize = 32 * 1024 * 1024) {
     return chunks;
 }
 
+// TODO. Promise未来完成的任务(成功或失败)
+// 成功调resolve() -> 告诉await这轮上传已经完成, 可以继续下一轮
+// 失败调reject() -> 停止上传
 function uploadChunk(formData) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
