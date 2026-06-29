@@ -1,9 +1,6 @@
 const singleUploadForm = document.querySelector('#singleUploadForm');
 const singleFileUploadInput = document.querySelector('#singleFileUploadInput');
 
-const multipleUploadForm = document.querySelector('#multipleUploadForm');
-const multipleFileUploadInput = document.querySelector('#multipleFileUploadInput');
-
 const fileUploadError = document.querySelector('#fileUploadError');
 const fileUploadSuccess = document.querySelector('#fileUploadSuccess');
 
@@ -17,6 +14,7 @@ singleUploadForm.addEventListener('submit', function(event){
     event.preventDefault();
 }, true);
 
+// 普通的单文件上传, 一次上传整个大文件
 function uploadSingleFile(file) {
     showLoading();
     const formData = new FormData();
@@ -47,50 +45,7 @@ function uploadSingleFile(file) {
     xmlHttpRequest.send(formData);
 }
 
-multipleUploadForm.addEventListener('submit', function(event){
-    const files = multipleFileUploadInput.files;
-    if(files.length === 0) {
-        fileUploadError.innerHTML = "Please select at least one file";
-        fileUploadSuccess.style.display = "block";
-    }
-    uploadMultipleFiles(files);
-    event.preventDefault();
-}, true);
-
-function uploadMultipleFiles(files) {
-    showLoading();
-
-    const formData = new FormData();
-    for(let index = 0; index < files.length; index++) {
-        formData.append("files", files[index]);
-    }
-    const xmlHttpRequest = new XMLHttpRequest();
-    xmlHttpRequest.open("POST", "http://localhost:8080/v1/file/upload/multiple");
-
-    // 控制上传进度条
-    xmlHttpRequest.upload.onprogress = function (event) {
-        if (event.lengthComputable) {
-            const percent = Math.round((event.loaded / event.total) * 100);
-            uploadProgressText.innerText = percent + "%";
-        }
-    };
-
-    // Callback回调函数
-    xmlHttpRequest.onload = function () {
-        hideLoading();
-        showModal("Upload Success", xmlHttpRequest.responseText, "success");
-        multipleFileUploadInput.value = '';
-        uploadProgressText.innerText = "0%";
-    };
-    xmlHttpRequest.onerror = function () {
-        hideLoading();
-        showModal("Upload Failed", xmlHttpRequest.responseText || "Internal Server Error", "error");
-    };
-    xmlHttpRequest.send(formData);
-}
-
-// TODO. 如果后端返回Object对象则需要解析
-// const response = JSON.parse(xmlHttpRequest.responseText);
+// TODO. 如果后端返回Object对象则解析JSON.parse(xmlHttpRequest.responseText);
 function handleUploadResponse(xmlHttpRequest) {
     if (xmlHttpRequest.status === 200) {
         fileUploadError.style.display = "none";
