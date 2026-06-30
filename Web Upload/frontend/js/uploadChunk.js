@@ -27,7 +27,8 @@ async function uploadWithChunks(file) {
         formData.append("fileId", fileId);
 
         try {
-            // 暂停当前函数, 等uploadChunk完成再继续 => 接收resolve()通知
+            // await只能出现在async函数中
+            // 暂停当前函数, 接收resolve()通知, 直到uploadChunk完成再继续
             await uploadChunk(formData);
 
             const percent = Math.round(((i + 1) / chunks.length) * 100);
