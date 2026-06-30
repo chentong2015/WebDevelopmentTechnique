@@ -34,13 +34,13 @@ function uploadSingleFile(file) {
     // Callback回调函数
     xmlHttpRequest.onload = function () {
         hideLoading();
-        showModal("Upload Success", xmlHttpRequest.responseText, "success");
-        singleFileUploadInput.value = '';
         uploadProgressText.innerText = "0%";
+        showModal("Upload Finish", xmlHttpRequest.responseText);
+        singleFileUploadInput.value = '';
     };
     xmlHttpRequest.onerror = function () {
         hideLoading();
-        showModal("Upload Failed", xmlHttpRequest.responseText || "Internal Server Error", "error");
+        showModal("Upload Failed", xmlHttpRequest.responseText || "Internal Server Error");
     };
     xmlHttpRequest.send(formData);
 }

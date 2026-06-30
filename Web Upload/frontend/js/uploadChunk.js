@@ -35,13 +35,13 @@ async function uploadWithChunks(file) {
             uploadProgressText.innerText = percent + "%";
             chunkFileUploadInput.value = '';
         } catch (err) {
-            showModal("Upload Failed", xmlHttpRequest.responseText || "Internal Server Error", "error");
+            showModal("Upload Failed", xmlHttpRequest.responseText || "Internal Server Error");
             console.log("upload paused, network error");
             return; // 停止上传，等待恢复
         }
     }
     hideLoading();
-    showModal("Success", "Upload completed", "success");
+    showModal("Upload Finish", "Success upload all chunk files");
 }
 
 // Chunk file size = 32M
